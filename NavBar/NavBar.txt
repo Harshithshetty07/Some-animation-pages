@@ -1,0 +1,85 @@
+'use client'
+import Link from 'next/link';
+import React from 'react';
+import { Power } from 'lucide-react';
+import { CircleGauge } from 'lucide-react';
+import { ThermometerSun } from 'lucide-react';
+
+
+
+const NavBarButtons = () => {
+  return (
+    <div className="social-icons">
+      <ul className="flex justify-center items-center gap-10">
+        <li className="mx-2.5 relative group">
+          <Link href="home"  className="relative overflow-hidden flex justify-center items-center w-[50px] h-[50px] rounded-full bg-white text-[#4d4d4d] transition-all duration-300 ease-in-out hover:shadow-lg group-hover:text-white">
+            <div className="absolute bottom-0 left-0 w-full h-0 bg-[#1db954] text-white transition-all duration-300 ease-in-out group-hover:h-full"></div>
+            <ThermometerSun />
+          </Link>
+          <div className="absolute left-1/2 transform -translate-x-1/2 bg-[#1db954] text-white py-1.5 px-2.5 rounded opacity-0 invisible transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:-bottom-10 -bottom-8 text-sm">
+            Temperature
+          </div>
+        </li>
+        <li className="mx-2.5 relative group">
+          <Link href="home"  className="relative overflow-hidden flex justify-center items-center w-[50px] h-[50px] rounded-full bg-white text-[#4d4d4d] transition-all duration-300 ease-in-out hover:shadow-lg group-hover:text-white">
+            <div className="absolute bottom-0 left-0 w-full h-0 bg-[#ea4c89] transition-all duration-300 ease-in-out group-hover:h-full"></div>
+            <CircleGauge />
+          </Link>
+          <div className="absolute left-1/2 transform -translate-x-1/2 bg-[#ea4c89] text-white py-1.5 px-2.5 rounded opacity-0 invisible transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:-bottom-10 -bottom-8 text-sm">
+          Pressure
+          </div>
+        </li>
+        <li className="mx-2.5 relative group">
+          <Link href="home"  className="relative overflow-hidden flex justify-center items-center w-[50px] h-[50px] rounded-full bg-white text-[#4d4d4d] transition-all duration-300 ease-in-out hover:shadow-lg group-hover:text-white">
+            <div className="absolute bottom-0 left-0 w-full h-0 bg-[#0088cc] hover:text-white  transition-all duration-300 ease-in-out group-hover:h-full"></div>
+            <Power  />
+          </Link>
+          <div className="absolute left-1/2 transform -translate-x-1/2 bg-[#0088cc] text-white py-1.5 px-2.5 rounded opacity-0 invisible transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:visible group-hover:-bottom-10 -bottom-8 text-sm">
+            Energy
+          </div>
+        </li>
+      </ul>
+
+      <style jsx>{`
+        .social-icons ul li::after {
+          content: "";
+          display: block;
+          height: 0px;
+          transition: height 0.3s ease-in-out;
+          pointer-events: none;
+        }
+
+        .social-icons ul li:hover::after {
+          height: 10px;
+        }
+      `}</style>
+    </div>
+  );
+}
+
+export default NavBarButtons;
+
+
+
+
+import Image from 'next/image'
+import React from 'react';
+import CmtiLogo from '../../public/images/cmti-logo.png'
+import NavBarButtons from './NavBarButtons';
+
+function NavBar() {
+  return (
+    <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-[10%]'>
+
+    <div className='w-32'>
+      <Image src={CmtiLogo} alt='Cmti Logo' />
+    </div>
+    <div>
+      <NavBarButtons />
+    </div>
+    </div>
+
+  )
+}
+
+export default NavBar
